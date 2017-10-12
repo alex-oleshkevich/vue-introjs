@@ -11,7 +11,10 @@ export default {
     devtool: 'source-map',
     resolve: {
         extensions: ['.js'],
-        modules: [__dirname, path.join(__dirname, 'node_modules')]
+        modules: [__dirname, path.join(__dirname, 'node_modules')],
+        alias: {
+            '~': path.join(__dirname, 'src')
+        }
     },
     module: {
         rules: [
