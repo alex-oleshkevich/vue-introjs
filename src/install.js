@@ -1,4 +1,4 @@
-import introJs from 'intro.js';
+/* global introJs */
 
 export default (Vue) => {
     Vue.prototype.$intro = (...args) => {

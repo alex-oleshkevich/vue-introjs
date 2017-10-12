@@ -11,8 +11,10 @@ npm i vue-introjs
 ```
 
 ### Note
-Make sure you have attached `introJs` scripts and styles to the page.
+Make sure you have installed and attached [`intro.js`](http://introjs.com/docs/getting-started/install) scripts and styles to the page.
 This plugin **does not** come with intro.js built-in.
+
+The motivation of it is to give the developer more control on intro.js versions.
 
 ### Install plugin
 ```javascript
@@ -102,3 +104,4 @@ Basically, `$intro()` returns a new `introJs` instance which then can be configu
 
 ## Credits
 1. [http://introjs.com](http://introjs.com)
+2. Gabriel J Perez Irizarry

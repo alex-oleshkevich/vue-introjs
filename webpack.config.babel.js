@@ -13,10 +13,6 @@ export default {
         extensions: ['.js'],
         modules: [__dirname, path.join(__dirname, 'node_modules')]
     },
-    externals: {
-        vue: 'Vue',
-        'intro.js': 'introJs'
-    },
     module: {
         rules: [
             {
