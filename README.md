@@ -50,7 +50,7 @@ The plugin extends Vue with a set of directives and `$intro()` constructor funct
 
 
 ## Define steps and hints
-Plugin provides a set of directives:
+Directives, to define introductional steps:
 ### Steps
 
 ```html
@@ -89,7 +89,9 @@ To disable interactions with elements inside the highlighted box, `true` or `fal
 ```
 
 More about [intro steps](http://introjs.com/docs/intro/attributes/)
+
 ### Hints
+Directives, to define hints:
 
 ```html
 The tooltip text of hint.
