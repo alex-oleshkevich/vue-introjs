@@ -1,0 +1,34 @@
+{
+  "name": "vue-initjs",
+  "version": "1.0.0",
+  "description": "intro.js binding for Vue",
+  "main": "index.js",
+  "repository": "https://github.com/alex-oleshkevich/vue-introjs",
+  "author": "Alex Oleshkevich",
+  "license": "MIT",
+  "dependencies": {
+    "intro.js": "^2.8.0-alpha.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.1",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "eslint": "^4.8.0",
+    "eslint-config-node": "^1.6.0",
+    "eslint-config-promise": "^1.1.3",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-friendly-formatter": "^3.0.0",
+    "eslint-loader": "^1.8.0",
+    "eslint-plugin-html": "^3.0.0",
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-node": "^5.0.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "vue": "^2.4.4",
+    "webpack": "^3.7.1"
+  }
+}
