@@ -22,7 +22,7 @@ This plugin **does not** come with intro.js built-in.
 
 The motivation of it is to give the developer more control on intro.js versions.
 
-#### Usa with webpack
+#### Use with webpack
 Install required dependency:
 ```bash
 yarn add intro.js
