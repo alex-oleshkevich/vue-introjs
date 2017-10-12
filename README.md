@@ -10,6 +10,10 @@ yarn add vue-introjs
 npm i vue-introjs
 ```
 
+### Note
+Make sure you have attached `introJs` scripts and styles to the page.
+This plugin **does not** come with intro.js built-in.
+
 ### Install plugin
 ```javascript
 import VueIntro from 'vue-introjs';

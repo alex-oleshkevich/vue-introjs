@@ -1,14 +1,11 @@
 {
-  "name": "vue-initjs",
+  "name": "vue-introjs",
   "version": "1.0.0",
   "description": "intro.js binding for Vue",
   "main": "index.js",
   "repository": "https://github.com/alex-oleshkevich/vue-introjs",
   "author": "Alex Oleshkevich",
   "license": "MIT",
-  "dependencies": {
-    "intro.js": "^2.8.0-alpha.1"
-  },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.1",
