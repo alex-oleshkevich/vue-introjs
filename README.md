@@ -10,16 +10,39 @@ yarn add vue-introjs
 npm i vue-introjs
 ```
 
-### Note
+### Install plugin
+```javascript
+import VueIntro from 'vue-introjs';
+Vue.use(VueIntro);
+```
+
+#### Use CDN version of introJs
 Make sure you have installed and attached [`intro.js`](http://introjs.com/docs/getting-started/install) scripts and styles to the page.
 This plugin **does not** come with intro.js built-in.
 
 The motivation of it is to give the developer more control on intro.js versions.
 
-### Install plugin
+#### Usa with webpack
+Install required dependency:
+```bash
+yarn add intro.js
+```
+
+As this plugin relies on global `introJs` variable, webpack's should provide it:
 ```javascript
-import VueIntro from 'vue-introjs';
-Vue.use(VueIntro);
+// webpack.config.js
+{
+    plugins: [
+        new webpack.ProvidePlugin({
+            // other modules
+            introJs: ['intro.js', 'introJs']
+        })
+    ]
+}
+
+// attach CSS
+// SomeComponent.vue
+import 'intro.js/introjs.css';
 ```
 
 ## Contents
@@ -79,6 +102,8 @@ Optionally define the position of hint. Options: `top-middle`, `top-left`, `top-
 ```
 
 More about [hints](http://introjs.com/docs/hints/attributes/)
+
+Also refer `example` directory for live examples.
 
 ## Usage
 Once all steps are defined, call `start()` or `showHints()` to start the show:
