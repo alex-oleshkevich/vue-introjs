@@ -3,3 +3,4 @@ yarn.lock
 example
 .eslintrc.js
 .babelrc
+/reports
