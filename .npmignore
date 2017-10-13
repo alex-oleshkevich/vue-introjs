@@ -4,3 +4,4 @@ example
 .eslintrc.js
 .babelrc
 /reports
+.vscode
