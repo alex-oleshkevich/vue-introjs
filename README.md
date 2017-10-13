@@ -129,6 +129,21 @@ this.$intro().addStep({}); // Add a new step to introJs programmatically.
 
 Basically, `$intro()` returns a new `introJs` instance which then can be configured usign it's [API](http://introjs.com/docs/intro/api).
 
+## Autostart
+If tour should start automatically when all directives loaded,
+add `v-intro-autostart="true"` directive.
+Also extra configuration required for plugin:
+```javascript
+import VueIntro from 'intro.js';
+Vue.use(VueIntro, {
+    waitTimeout: 400
+});
+```
+### How it works
+The plugin starts a timer with `waitTimeout`.
+Every `v-intro` directive restarts that timer. This lets the plugin to wait for async components, router views or other components to load before tour will be autostarted.
+
+
 ## Credits
 1. [http://introjs.com](http://introjs.com)
 2. Gabriel J Perez Irizarry

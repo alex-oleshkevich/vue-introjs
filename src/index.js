@@ -1,11 +1,24 @@
 /* global introJs */
 import { DIRECTIVES } from './directives';
+import timer from './timer';
+
+const DEFAULT_OPTIONS = {
+    waitTimeout: 400
+};
 
 const Plugin = {
-    install(Vue) {
+    install(Vue, options) {
+        options = Object.assign({}, DEFAULT_OPTIONS, options);
+
         Vue.prototype.$intro = (...args) => {
             return introJs(...args);
         };
+
+        const Comp = Vue.extend(timer);
+        window.__introjsDiscovery = new Comp({
+            propsData: options
+        });
+
         Vue.directive('intro', DIRECTIVES.intro);
         Vue.directive('intro-step', DIRECTIVES.step);
         Vue.directive('intro-position', DIRECTIVES.position);

@@ -36,4 +36,9 @@ define('plugin', () => {
         const vm = new Vue();
         expect(vm.$intro.constructor).equals(Function);
     });
+
+    it('should autoregister discovery service', () => {
+        Vue.use(Plugin);
+        expect(window.__introjsDiscovery).to.be.ok;
+    });
 });
