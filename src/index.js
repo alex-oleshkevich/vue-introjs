@@ -15,6 +15,7 @@ const Plugin = {
         Vue.directive('intro-disable-interaction', DIRECTIVES.disableIntegration);
         Vue.directive('intro-hint', DIRECTIVES.hint);
         Vue.directive('intro-hint-position', DIRECTIVES.hintPosition);
+        Vue.directive('intro-autostart', DIRECTIVES.autostart);
     }
 };
 

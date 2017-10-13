@@ -7,8 +7,9 @@ import scrollTo from './scroll-to';
 import disableIntegration from './disable-integration';
 import hint from './hint';
 import hintPosition from './hint-position';
+import autostart from './autostart';
 
 export const DIRECTIVES = {
     intro, step, position, tooltipClass, highlightClass, scrollTo,
-    disableIntegration, hint, hintPosition
+    disableIntegration, hint, hintPosition, autostart
 };
