@@ -1,6 +1,6 @@
 {
   "name": "vue-introjs",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "intro.js bindings for Vue",
   "main": "src/index.js",
   "repository": "https://github.com/alex-oleshkevich/vue-introjs",
