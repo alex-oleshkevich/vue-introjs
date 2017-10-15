@@ -29,6 +29,7 @@ const Plugin = {
         Vue.directive('intro-hint', DIRECTIVES.hint);
         Vue.directive('intro-hint-position', DIRECTIVES.hintPosition);
         Vue.directive('intro-autostart', DIRECTIVES.autostart);
+        Vue.directive('intro-if', DIRECTIVES.conditional);
     }
 };
 

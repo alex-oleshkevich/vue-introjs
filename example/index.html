@@ -22,11 +22,6 @@
             <button class="btn btn-primary" @click="startTour">Start tour</button>
         </div>
         <br />
-        <div>
-            Autostart: {{ autostart }}<br />
-            <button class="btn btn-primary" @click="toggleAutostart">Toggle</button>
-        </div>
-        <br />
         <div v-intro-autostart="autostart">
             <h3 v-intro="'Step 1, default'">Intro step 1</h3>
             <div>

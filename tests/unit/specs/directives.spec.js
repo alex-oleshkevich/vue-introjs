@@ -82,4 +82,27 @@ define('directives', () => {
         const vm = new Comp().$mount();
         expect(vm.$el.dataset.hintposition).equals('top');
     });
+
+    it('v-intro should remove data-intro attribute', () => {
+        const Comp = Vue.extend({
+            template: `<div v-intro="'content'" v-intro-if="false"></div>`,
+            directives: {
+                intro: DIRECTIVES.intro, introIf: DIRECTIVES.conditional
+            }
+        });
+        const vm = new Comp().$mount();
+        const value = vm.$el.dataset['intro'];
+        expect(value).equals(undefined);
+    });
+
+    it('v-intro should keep data-intro attribute if evaluates to true', () => {
+        const Comp = Vue.extend({
+            template: `<div v-intro="'content'" v-intro-if="true"></div>`,
+            directives: {
+                intro: DIRECTIVES.intro, introIf: DIRECTIVES.conditional
+            }
+        });
+        const vm = new Comp().$mount();
+        expect(vm.$el.dataset.intro).equals('content');
+    });
 });
