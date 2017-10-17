@@ -140,6 +140,8 @@ Vue.use(VueIntro, {
 });
 ```
 
+For hints use `v-intro-autostart:hints="true"`.
+
 ### How it works
 The plugin starts a timer with `waitTimeout`.
 Every `v-intro` directive restarts that timer. This lets the plugin to wait for async components, router views or other components to load before tour will be autostarted.
