@@ -95,12 +95,12 @@ Directives, to define hints:
 
 ```html
 The tooltip text of hint.
-<div v-hint="'The content of tooltip'"></div>
+<div v-intro-hint="'The content of tooltip'"></div>
 ```
 
 ```html
 Optionally define the position of hint. Options: `top-middle`, `top-left`, `top-right`, `bottom-left`, `bottom-right`, `bottom-middle`, `middle-left`, `middle-right`, `middle-middle`. Default: `top-middle`.
-<div v-hint="'The content of tooltip'" v-intro-hint-position="'top'"></div>
+<div v-intro-hint="'The content of tooltip'" v-intro-hint-position="'top'"></div>
 ```
 
 More about [hints](http://introjs.com/docs/hints/attributes/)
