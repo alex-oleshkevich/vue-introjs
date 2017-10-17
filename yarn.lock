@@ -2071,6 +2071,10 @@ expand-range@^1.8.1:
   dependencies:
     fill-range "^2.1.0"
 
+expose-loader@^0.7.3:
+  version "0.7.3"
+  resolved "https://registry.yarnpkg.com/expose-loader/-/expose-loader-0.7.3.tgz#35fbd3659789e4faa81f59de8b7e9fc39e466d51"
+
 extend@^3.0.0, extend@~3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/extend/-/extend-3.0.1.tgz#a755ea7bc1adfcc5a31ce7e762dbaadc5e636444"
@@ -2600,6 +2604,10 @@ inquirer@^3.0.6:
 interpret@^1.0.0:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.0.4.tgz#820cdd588b868ffb191a809506d6c9c8f212b1b0"
+
+intro.js@^2.8.0-alpha.1:
+  version "2.8.0-alpha.1"
+  resolved "https://registry.yarnpkg.com/intro.js/-/intro.js-2.8.0-alpha.1.tgz#0838783af88f6d52254f86c118e60a5d4a39f1fe"
 
 invariant@^2.2.0, invariant@^2.2.2:
   version "2.2.2"

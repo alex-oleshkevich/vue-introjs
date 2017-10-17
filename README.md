@@ -144,6 +144,10 @@ Vue.use(VueIntro, {
 The plugin starts a timer with `waitTimeout`.
 Every `v-intro` directive restarts that timer. This lets the plugin to wait for async components, router views or other components to load before tour will be autostarted.
 
+### Configure intro.js instance
+```html
+<div v-intro-autostart="true" v-intro-autostart.config="{ doneLabel: 'DONE!' }"></div>
+```
 
 ## Conditional steps and hints
 When it is required to bind intro only when some expression evaluates to `true`,

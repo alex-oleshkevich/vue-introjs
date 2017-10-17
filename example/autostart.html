@@ -10,7 +10,10 @@
     <div class="container" id="root">
         <br />
         <br />
-        <div v-intro-autostart="autostart">
+        <div
+            v-intro-autostart="autostart"
+            v-intro-autostart.config="autostartConfig"
+            >
             <div id="step1" v-intro="'Step 1'">1. Step.</div>
             <div id="step2" v-intro="'Step 2'">2. Step.</div>
         </div>
@@ -24,7 +27,10 @@
             el: '#root',
             data() {
                 return {
-                    autostart: true
+                    autostart: true,
+                    autostartConfig: {
+                        nextLabel: '[next -->]'
+                    }
                 };
             }
         });
