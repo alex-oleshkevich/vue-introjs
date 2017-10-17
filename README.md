@@ -168,7 +168,7 @@ The format is:
 ```
 v-intro-autostart:on.<event-name>="<callback>"
 ```
-where <event-name> is any of intro.js supported hooks (see [intro.js hooks](http://introjs.com/docs/intro/api/#introjsoncompleteprovidedcallback)) for more details.
+where `event-name` is any of intro.js supported hooks (see [intro.js hooks](http://introjs.com/docs/intro/api/#introjsoncompleteprovidedcallback)) for more details.
 Same applies to hints.
 
 **Note**, the plugin defines two more events, designed to work with the autostart feature:
