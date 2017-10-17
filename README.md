@@ -148,6 +148,8 @@ It accepts any valid expression which must return `true` or `false`:
 <div v-intro="'Conditional step" v-intro-if="item.id == 1" v-for="item in items" :key="item.id"></div>
 ```
 
+Note, that `v-intro-if` directive must go after `v-intro`.
+
 ### How it works
 The plugin starts a timer with `waitTimeout`.
 Every `v-intro` directive restarts that timer. This lets the plugin to wait for async components, router views or other components to load before tour will be autostarted.
