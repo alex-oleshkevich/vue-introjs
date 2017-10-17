@@ -1,4 +1,5 @@
 import Vue from 'vue/dist/vue.common';
+import sinon from 'sinon';
 import { DIRECTIVES } from '~/directives';
 
 define('directives', () => {
@@ -104,5 +105,47 @@ define('directives', () => {
         });
         const vm = new Comp().$mount();
         expect(vm.$el.dataset.intro).equals('content');
+    });
+
+    it('v-intro-autostart should do nothing if value was provided', () => {
+        window.introJs = f => 'intro';
+        const Comp = Vue.extend({
+            template: `<div v-intro-autostart="false"></div>`,
+            directives: { introAutostart: DIRECTIVES.autostart }
+        });
+        const vm = new Comp().$mount();
+        expect('__introjs' in vm.$el).to.be.false;
+    });
+
+    it('v-intro-autostart should bind introjs instance to element if true was provided', () => {
+        window.introJs = f => 'intro';
+        const Comp = Vue.extend({
+            template: `<div v-intro-autostart="true"></div>`,
+            directives: { introAutostart: DIRECTIVES.autostart }
+        });
+        const vm = new Comp().$mount();
+        expect('__introjs' in vm.$el).to.be.true;
+    });
+
+    it('v-intro-autostart.config should set intro options', () => {
+        const spy = sinon.spy();
+        window.introJs = f => {
+            return {
+                setOptions: spy
+            };
+        };
+
+        const config = { foo: 'foo', bar: 'bar' };
+        const Comp = Vue.extend({
+            data() {
+                return {
+                    config: config
+                };
+            },
+            template: `<div v-intro-autostart.config="config"></div>`,
+            directives: { introAutostart: DIRECTIVES.autostart }
+        });
+        new Comp().$mount();
+        expect(spy).to.be.calledWith(config);
     });
 });

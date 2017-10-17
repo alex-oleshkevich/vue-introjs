@@ -1,13 +1,12 @@
 /* global introJs */
-
 let shown = false;
 
-function startTour(steps) {
+function startTour(el) {
     if (shown) {
         return;
     }
     shown = true;
-    introJs().start();
+    el.__introjs.start();
 }
 
 function waitForSteps(steps) {
@@ -27,9 +26,20 @@ export default async(el, binding) => {
         return;
     }
 
+    // set introjs instance to element
+    if (!el.hasOwnProperty('__introjs')) {
+        el.__introjs = introJs();
+    }
+
+    // configure introjs
+    if ('config' in binding.modifiers) {
+        el.__introjs.setOptions(binding.value);
+        return;
+    }
+
     try {
         await waitForSteps();
-        startTour();
+        startTour(el);
     } catch (e) {
         console.error(e);
     }
