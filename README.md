@@ -129,6 +129,15 @@ this.$intro().addStep({}); // Add a new step to introJs programmatically.
 
 Basically, `$intro()` returns a new `introJs` instance which then can be configured usign it's [API](http://introjs.com/docs/intro/api).
 
+## Registering callbacks
+Just call `this.$intro().<callback-name>`. Example:
+```javascript
+// SomeComponent
+this.$intro().oncomplete(function () {
+    console.log('completed');
+});
+```
+
 ## Autostart
 If tour should start automatically when all directives loaded,
 add `v-intro-autostart="true"` directive.
@@ -151,6 +160,24 @@ Add `v-intro-autostart.config` next to `v-intro-autostart` with intro.js configu
 That object then passed to `introJs(obj)` constructor.
 ```html
 <div v-intro-autostart="true" v-intro-autostart.config="{ doneLabel: 'DONE!' }"></div>
+```
+
+### Listening for intro.js events
+It is possible to add event listeners to automatically started tour.
+The format is:
+```
+v-intro-autostart:on.<event-name>="<callback>"
+```
+where <event-name> is any of intro.js supported hooks (see [intro.js hooks](http://introjs.com/docs/intro/api/#introjsoncompleteprovidedcallback)) for more details.
+Same applies to hints.
+
+**Note**, the plugin defines two more events, designed to work with the autostart feature:
+`onautostart` and `onautostarthints`.
+
+For example:
+```html
+<div v-intro-autostart="true" v-intro-autostart:on.complete="onComplete"></div>
+<div v-intro-autostart="true" v-intro-autostart:on.autostart="onAutostarted"></div>
 ```
 
 ## Conditional steps and hints
