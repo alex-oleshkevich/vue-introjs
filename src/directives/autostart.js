@@ -11,12 +11,18 @@ function startTour(el) {
 
     // autostart tour
     el.__introjs.start();
-    el.__introjs.onAutostartHook(el);
+
+    if (el.__introjs.onAutostartHook) {
+        el.__introjs.onAutostartHook(el);
+    }
 
     // if flag, autoshow hints
     if (el.hasOwnProperty('__introjsAutoHints')) {
         el.__introjs.showHints();
-        el.__introjs.onAutostartHintsHook(el);
+
+        if (el.__introjs.onAutostartHintsHook) {
+            el.__introjs.onAutostartHintsHook(el);
+        }
     }
 }
 
