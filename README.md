@@ -172,7 +172,7 @@ where `event-name` is any of intro.js supported hooks (see [intro.js hooks](http
 Same applies to hints.
 
 **Note**, the plugin defines two more events, designed to work with the autostart feature:
-`onautostart` and `onautostarthints`.
+`onautostart` and `onautostarthints`. These callbacks receive two arguments: `element` and current `introjs` instance.
 
 For example:
 ```html
