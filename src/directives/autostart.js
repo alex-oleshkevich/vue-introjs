@@ -8,7 +8,14 @@ function startTour(el) {
         return;
     }
     shown = true;
+
+    // autostart tour
     el.__introjs.start();
+
+    // if flag, autoshow hints
+    if ('__introjsAutoHints' in el) {
+        el.__introjs.showHints();
+    }
 }
 
 export default async(el, binding) => {
@@ -19,6 +26,10 @@ export default async(el, binding) => {
     // set introjs instance to element
     if (!el.hasOwnProperty('__introjs')) {
         el.__introjs = introJs();
+    }
+
+    if (binding.arg === 'hints') {
+        el.__introjsAutoHints = true;
     }
 
     // configure introjs

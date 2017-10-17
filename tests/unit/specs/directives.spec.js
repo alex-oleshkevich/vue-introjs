@@ -148,4 +148,24 @@ define('directives', () => {
         new Comp().$mount();
         expect(spy).to.be.calledWith(config);
     });
+
+    it('v-intro-autostart:hints should add __introjsAutoHints to element if true was provided', () => {
+        window.introJs = f => 'intro';
+        const Comp = Vue.extend({
+            template: `<div v-intro-autostart:hints="true"></div>`,
+            directives: { introAutostart: DIRECTIVES.autostart }
+        });
+        const vm = new Comp().$mount();
+        expect('__introjsAutoHints' in vm.$el).to.be.true;
+    });
+
+    it('v-intro-autostart:hints should NOT add __introjsAutoHints to element if false was provided', () => {
+        window.introJs = f => 'intro';
+        const Comp = Vue.extend({
+            template: `<div v-intro-autostart:hints="false"></div>`,
+            directives: { introAutostart: DIRECTIVES.autostart }
+        });
+        const vm = new Comp().$mount();
+        expect('__introjsAutoHints' in vm.$el).to.be.false;
+    });
 });
