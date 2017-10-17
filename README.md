@@ -145,6 +145,8 @@ The plugin starts a timer with `waitTimeout`.
 Every `v-intro` directive restarts that timer. This lets the plugin to wait for async components, router views or other components to load before tour will be autostarted.
 
 ### Configure intro.js instance
+Add `v-intro-autostart.config` next to `v-intro-autostart` with intro.js configuration object as an argument.
+That object then passed to `introJs(obj)` constructor.
 ```html
 <div v-intro-autostart="true" v-intro-autostart.config="{ doneLabel: 'DONE!' }"></div>
 ```

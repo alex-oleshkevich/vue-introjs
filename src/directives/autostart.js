@@ -1,4 +1,6 @@
 /* global introJs */
+import { waitForDirectives } from '../utils';
+
 let shown = false;
 
 function startTour(el) {
@@ -7,18 +9,6 @@ function startTour(el) {
     }
     shown = true;
     el.__introjs.start();
-}
-
-function waitForSteps(steps) {
-    return new Promise((resolve, reject) => {
-        if (window.__introjsDiscovery.ready) {
-            resolve();
-        } else {
-            window.__introjsDiscovery.$on('ready', f => {
-                resolve();
-            });
-        }
-    });
 }
 
 export default async(el, binding) => {
@@ -38,7 +28,7 @@ export default async(el, binding) => {
     }
 
     try {
-        await waitForSteps();
+        await waitForDirectives();
         startTour(el);
     } catch (e) {
         console.error(e);
