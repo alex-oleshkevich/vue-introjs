@@ -12,7 +12,12 @@ npm i vue-introjs
 
 ### Install plugin
 ```javascript
+// ES6 version
 import VueIntro from 'vue-introjs';
+
+// ES5 version
+import VueIntro from 'vue-introjs/dist/index.min.js';
+
 Vue.use(VueIntro);
 ```
 
