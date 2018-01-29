@@ -6,7 +6,9 @@ export default {
         index: './src/index.js'
     },
     output: {
-        filename: `dist/[name].min.js`
+        filename: `dist/[name].min.js`,
+        library: 'default',
+        libraryTarget: 'umd'
     },
     devtool: 'source-map',
     resolve: {
@@ -27,11 +29,11 @@ export default {
         ]
     },
     plugins: [
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            },
-            sourceMap: true
-        })
+          new webpack.optimize.UglifyJsPlugin({
+              compress: {
+                  warnings: false
+              },
+              sourceMap: true
+          })
     ]
 };
