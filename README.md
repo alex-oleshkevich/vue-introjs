@@ -45,6 +45,19 @@ As this plugin relies on global `introJs` variable, webpack's should provide it:
 import 'intro.js/introjs.css';
 ```
 
+#### Use with vue-cli and webpack template
+Add to your `src/main.js` something like this for global, or per SFC like above:
+```javascript
+import VueIntro from 'vue-introjs'
+Vue.use(VueIntro)
+
+import 'intro.js/introjs.css';
+```
+then add into the `plugins` sections of `build/webpack.dev.conf.js` and `build/webpack.prod.conf.js` the `new webpack.ProvidePlugin({` section from above.
+
+Don't forget to install `intro.js` though and save it (via yarn or npm_. The `webpack.ProvidePlugin` will pull it in, so no need to `import introJs from 'intro.js'` in `src/main.js`
+
+
 ## Contents
 The plugin extends Vue with a set of directives and `$intro()` constructor function.
 
