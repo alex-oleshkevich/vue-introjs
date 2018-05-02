@@ -16,9 +16,6 @@ import VueIntro from 'vue-introjs';
 Vue.use(VueIntro);
 ```
 
-#### Note
-The plugin is designed to follow ES6 syntax, so you need to use babel. If you want to load ES5 version, import`vue-introjs/dist/index.min.js` instead of `vue-introjs`.
-
 #### Use CDN version of introJs
 Make sure you have installed and attached [`intro.js`](http://introjs.com/docs/getting-started/install) scripts and styles to the page.
 This plugin **does not** come with intro.js built-in.
