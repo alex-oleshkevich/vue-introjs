@@ -3,3 +3,5 @@ dist/
 /reports
 .vscode
 *.tgz
+package-lock.json
+testproject
