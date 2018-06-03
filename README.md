@@ -198,7 +198,7 @@ When it is required to bind intro only when some expression evaluates to `true`,
 use `v-intro-if` directive.
 It accepts any valid expression that evaluates to either `true` or `false`:
 ```html
-<div v-intro="'Conditional step" v-intro-if="item.id == 1" v-for="item in items" :key="item.id"></div>
+<div v-intro="'Conditional step'" v-intro-if="item.id == 1" v-for="item in items" :key="item.id"></div>
 ```
 
 Note, that `v-intro-if` directive must go after `v-intro`.
