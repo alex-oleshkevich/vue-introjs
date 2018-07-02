@@ -42,7 +42,6 @@ export default async(el, binding) => {
         };
     }
 
-    console.log(binding);
     if (binding.arg === 'hints') {
         el.__introjsAutoHints = true;
     }
