@@ -1,15 +1,17 @@
 import Vue from 'vue/dist/vue.common';
-import sinon from 'sinon';
-import { DIRECTIVES } from '~/directives';
+import Plugin from '~/index';
 
-define('directives', () => {
+Vue.use(Plugin);
+import { DIRECTIVES } from '../src/directives';
+
+describe('directives', () => {
     it('v-intro should add data-intro attribute', () => {
         const Comp = Vue.extend({
             template: `<div v-intro="'content'"></div>`,
             directives: { intro: DIRECTIVES.intro }
         });
         const vm = new Comp().$mount();
-        expect(vm.$el.dataset.intro).equals('content');
+        expect(vm.$el.dataset.intro).toEqual('content');
     });
 
     it('v-intro-step should add data-step attribute', () => {
@@ -18,7 +20,7 @@ define('directives', () => {
             directives: { introStep: DIRECTIVES.step }
         });
         const vm = new Comp().$mount();
-        expect(vm.$el.dataset.step).equals('2');
+        expect(vm.$el.dataset.step).toEqual('2');
     });
 
     it('v-intro-position should add data-position attribute', () => {
@@ -27,7 +29,7 @@ define('directives', () => {
             directives: { introPosition: DIRECTIVES.position }
         });
         const vm = new Comp().$mount();
-        expect(vm.$el.dataset.position).equals('top');
+        expect(vm.$el.dataset.position).toEqual('top');
     });
 
     it('v-intro-tooltip-class should add data-tooltipclass attribute', () => {
@@ -36,7 +38,7 @@ define('directives', () => {
             directives: { introTooltipClass: DIRECTIVES.tooltipClass }
         });
         const vm = new Comp().$mount();
-        expect(vm.$el.dataset.tooltipclass).equals('red');
+        expect(vm.$el.dataset.tooltipclass).toEqual('red');
     });
 
     it('v-intro-highlight-class should add data-highlightclass attribute', () => {
@@ -45,7 +47,7 @@ define('directives', () => {
             directives: { introHighlightClass: DIRECTIVES.highlightClass }
         });
         const vm = new Comp().$mount();
-        expect(vm.$el.dataset.highlightclass).equals('red');
+        expect(vm.$el.dataset.highlightclass).toEqual('red');
     });
 
     it('v-intro-scroll-to should add data-scrollto attribute', () => {
@@ -54,7 +56,7 @@ define('directives', () => {
             directives: { introScrollTo: DIRECTIVES.scrollTo }
         });
         const vm = new Comp().$mount();
-        expect(vm.$el.dataset.scrollto).equals('element');
+        expect(vm.$el.dataset.scrollto).toEqual('element');
     });
 
     it('v-intro-disable-integration should add data-disable-integration attribute', () => {
@@ -63,7 +65,7 @@ define('directives', () => {
             directives: { introDisableIntegration: DIRECTIVES.disableIntegration }
         });
         const vm = new Comp().$mount();
-        expect(vm.$el.dataset.disableIntegration).equals('true');
+        expect(vm.$el.dataset.disableIntegration).toEqual('true');
     });
 
     it('v-intro-hint should add data-hint attribute', () => {
@@ -72,7 +74,7 @@ define('directives', () => {
             directives: { introHint: DIRECTIVES.hint }
         });
         const vm = new Comp().$mount();
-        expect(vm.$el.dataset.hint).equals('element');
+        expect(vm.$el.dataset.hint).toEqual('element');
     });
 
     it('v-intro-hint-position should add data-hint-position attribute', () => {
@@ -81,7 +83,7 @@ define('directives', () => {
             directives: { introHintPosition: DIRECTIVES.hintPosition }
         });
         const vm = new Comp().$mount();
-        expect(vm.$el.dataset.hintposition).equals('top');
+        expect(vm.$el.dataset.hintposition).toEqual('top');
     });
 
     it('v-intro should remove data-intro attribute', () => {
@@ -93,7 +95,7 @@ define('directives', () => {
         });
         const vm = new Comp().$mount();
         const value = vm.$el.dataset['intro'];
-        expect(value).equals(undefined);
+        expect(value).toEqual(undefined);
     });
 
     it('v-intro should keep data-intro attribute if evaluates to true', () => {
@@ -104,7 +106,7 @@ define('directives', () => {
             }
         });
         const vm = new Comp().$mount();
-        expect(vm.$el.dataset.intro).equals('content');
+        expect(vm.$el.dataset.intro).toEqual('content');
     });
 
     it('v-intro-autostart should do nothing if value was provided', () => {
@@ -114,7 +116,7 @@ define('directives', () => {
             directives: { introAutostart: DIRECTIVES.autostart }
         });
         const vm = new Comp().$mount();
-        expect('__introjs' in vm.$el).to.be.false;
+        expect('__introjs' in vm.$el).toBeFalsy;
     });
 
     it('v-intro-autostart should bind introjs instance to element if true was provided', () => {
@@ -124,11 +126,11 @@ define('directives', () => {
             directives: { introAutostart: DIRECTIVES.autostart }
         });
         const vm = new Comp().$mount();
-        expect('__introjs' in vm.$el).to.be.true;
+        expect('__introjs' in vm.$el).toBeTruthy;
     });
 
     it('v-intro-autostart.config should set intro options', () => {
-        const spy = sinon.spy();
+        const spy = jest.fn();
         window.introJs = f => {
             return {
                 setOptions: spy
@@ -146,7 +148,7 @@ define('directives', () => {
             directives: { introAutostart: DIRECTIVES.autostart }
         });
         new Comp().$mount();
-        expect(spy).to.be.calledWith(config);
+        expect(spy).toHaveBeenCalledWith(config);
     });
 
     it('v-intro-autostart:hints should add __introjsAutoHints to element if true was provided', () => {
@@ -156,7 +158,7 @@ define('directives', () => {
             directives: { introAutostart: DIRECTIVES.autostart }
         });
         const vm = new Comp().$mount();
-        expect('__introjsAutoHints' in vm.$el).to.be.true;
+        expect('__introjsAutoHints' in vm.$el).toBeTruthy;
     });
 
     it('v-intro-autostart:hints should NOT add __introjsAutoHints to element if false was provided', () => {
@@ -166,6 +168,6 @@ define('directives', () => {
             directives: { introAutostart: DIRECTIVES.autostart }
         });
         const vm = new Comp().$mount();
-        expect('__introjsAutoHints' in vm.$el).to.be.false;
+        expect('__introjsAutoHints' in vm.$el).toBeFalsy;
     });
 });

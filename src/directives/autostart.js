@@ -70,6 +70,7 @@ export default async(el, binding) => {
         await waitForDirectives();
         startTour(el);
     } catch (e) {
+        // eslint-disable-next-line
         console.error(e);
     }
 };

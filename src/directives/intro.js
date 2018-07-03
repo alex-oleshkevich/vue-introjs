@@ -1,5 +1,5 @@
 export default {
-    bind(el, binding, vnode) {
+    bind(el, binding) {
         el.dataset.intro = binding.value;
         window.__introjsDiscovery.ping();
     }

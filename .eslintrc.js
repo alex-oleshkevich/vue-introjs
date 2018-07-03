@@ -6,9 +6,11 @@ module.exports = {
     },
     env: {
         browser: true,
-        jasmine: true
+        jasmine: true,
+        es6: true,
+        node: true,
     },
-    extends: 'standard',
+    extends: 'eslint:recommended',
     globals: {
         Vue: true
     },

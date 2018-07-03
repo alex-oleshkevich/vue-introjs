@@ -12,7 +12,7 @@ export default {
     methods: {
         restartTimer() {
             clearTimeout(this.timer);
-            this.timer = setTimeout(f => {
+            this.timer = setTimeout(() => {
                 this.ready = true;
                 this.$emit('ready', this.ready);
             }, this.waitTimeout);

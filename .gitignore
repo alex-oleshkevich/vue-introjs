@@ -5,3 +5,5 @@ dist/
 *.tgz
 package-lock.json
 testproject
+package-lock.json
+yarn-error.log
