@@ -13,6 +13,9 @@
     "test": "jest",
     "lint": "eslint --ext .js src/"
   },
+  "peerDependencies": {
+    "intro.js": "^2.7.0"
+  },
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.5",
