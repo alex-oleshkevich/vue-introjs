@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<testsuite name="HeadlessChrome 0.0.0 (Linux 0.0.0)" package="" timestamp="2018-01-29T20:29:18" id="0" hostname="desktop" tests="21" errors="0" failures="1" time="0.019">
+  <properties>
+    <property name="browser.fullName" value="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/64.0.3282.119 Safari/537.36"/>
+  </properties>
+  <testcase name=" v-intro should add data-intro attribute" time="0.007" classname="HeadlessChrome_0_0_0_(Linux_0_0_0).undefined"/>
+  <testcase name=" v-intro-step should add data-step attribute" time="0.001" classname="HeadlessChrome_0_0_0_(Linux_0_0_0).undefined"/>
+  <testcase name=" v-intro-position should add data-position attribute" time="0.001" classname="HeadlessChrome_0_0_0_(Linux_0_0_0).undefined"/>
+  <testcase name=" v-intro-tooltip-class should add data-tooltipclass attribute" time="0" classname="HeadlessChrome_0_0_0_(Linux_0_0_0).undefined"/>
+  <testcase name=" v-intro-highlight-class should add data-highlightclass attribute" time="0" classname="HeadlessChrome_0_0_0_(Linux_0_0_0).undefined"/>
+  <testcase name=" v-intro-scroll-to should add data-scrollto attribute" time="0.001" classname="HeadlessChrome_0_0_0_(Linux_0_0_0).undefined"/>
+  <testcase name=" v-intro-disable-integration should add data-disable-integration attribute" time="0" classname="HeadlessChrome_0_0_0_(Linux_0_0_0).undefined"/>
+  <testcase name=" v-intro-hint should add data-hint attribute" time="0" classname="HeadlessChrome_0_0_0_(Linux_0_0_0).undefined"/>
+  <testcase name=" v-intro-hint-position should add data-hint-position attribute" time="0.001" classname="HeadlessChrome_0_0_0_(Linux_0_0_0).undefined"/>
+  <testcase name=" v-intro should remove data-intro attribute" time="0" classname="HeadlessChrome_0_0_0_(Linux_0_0_0).undefined"/>
+  <testcase name=" v-intro should keep data-intro attribute if evaluates to true" time="0.001" classname="HeadlessChrome_0_0_0_(Linux_0_0_0).undefined"/>
+  <testcase name=" v-intro-autostart should do nothing if value was provided" time="0.002" classname="HeadlessChrome_0_0_0_(Linux_0_0_0).undefined"/>
+  <testcase name=" v-intro-autostart should bind introjs instance to element if true was provided" time="0" classname="HeadlessChrome_0_0_0_(Linux_0_0_0).undefined"/>
+  <testcase name=" v-intro-autostart.config should set intro options" time="0.002" classname="HeadlessChrome_0_0_0_(Linux_0_0_0).undefined"/>
+  <testcase name=" v-intro-autostart:hints should add __introjsAutoHints to element if true was provided" time="0" classname="HeadlessChrome_0_0_0_(Linux_0_0_0).undefined">
+    <failure type="">AssertionError: expected false to be true
+    at Context.&lt;anonymous&gt; (index.js:6:137316)
+</failure>
+  </testcase>
+  <testcase name=" v-intro-autostart:hints should NOT add __introjsAutoHints to element if false was provided" time="0" classname="HeadlessChrome_0_0_0_(Linux_0_0_0).undefined"/>
+  <testcase name=" should add $intro variable to vue prototype" time="0.002" classname="HeadlessChrome_0_0_0_(Linux_0_0_0).undefined"/>
+  <testcase name=" $intro() should return new introJs instance" time="0" classname="HeadlessChrome_0_0_0_(Linux_0_0_0).undefined"/>
+  <testcase name=" $intro() should pass arguments to introJs" time="0.001" classname="HeadlessChrome_0_0_0_(Linux_0_0_0).undefined"/>
+  <testcase name=" should autoregister in window has Vue" time="0" classname="HeadlessChrome_0_0_0_(Linux_0_0_0).undefined"/>
+  <testcase name=" should autoregister discovery service" time="0" classname="HeadlessChrome_0_0_0_(Linux_0_0_0).undefined"/>
+  <system-out>
+    <![CDATA[HeadlessChrome 0.0.0 (Linux 0.0.0) INFO: 'Download the Vue Devtools extension for a better development experience:
+https://github.com/vuejs/vue-devtools'
+,HeadlessChrome 0.0.0 (Linux 0.0.0) INFO: 'You are running Vue in development mode.
+Make sure to turn on production mode when deploying for production.
+See more tips at https://vuejs.org/guide/deployment.html'
+,HeadlessChrome 0.0.0 (Linux 0.0.0) ERROR: '[Vue warn]: Error in directive intro bind hook: "TypeError: Cannot read property 'ping' of undefined"
+
+(found in <Root>)'
+,HeadlessChrome 0.0.0 (Linux 0.0.0) ERROR: TypeError{}
+,HeadlessChrome 0.0.0 (Linux 0.0.0) ERROR: '[Vue warn]: Error in directive intro-hint bind hook: "TypeError: Cannot read property 'ping' of undefined"
+
+(found in <Root>)'
+,HeadlessChrome 0.0.0 (Linux 0.0.0) ERROR: TypeError{}
+,HeadlessChrome 0.0.0 (Linux 0.0.0) ERROR: '[Vue warn]: Error in directive intro bind hook: "TypeError: Cannot read property 'ping' of undefined"
+
+(found in <Root>)'
+,HeadlessChrome 0.0.0 (Linux 0.0.0) ERROR: TypeError{}
+,HeadlessChrome 0.0.0 (Linux 0.0.0) ERROR: '[Vue warn]: Error in directive intro bind hook: "TypeError: Cannot read property 'ping' of undefined"
+
+(found in <Root>)'
+,HeadlessChrome 0.0.0 (Linux 0.0.0) ERROR: TypeError{}
+,HeadlessChrome 0.0.0 (Linux 0.0.0) LOG: Object{name: 'intro-autostart', rawName: 'v-intro-autostart.config', value: Object{foo: 'foo', bar: 'bar'}, expression: 'config', modifiers: Object{config: true}, def: Object{bind: function (n,u){ ... }, update: function (n,u){ ... }}}
+
+]]>
+  </system-out>
+  <system-err/>
+</testsuite>

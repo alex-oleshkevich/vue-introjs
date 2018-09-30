@@ -1,39 +1,28 @@
 {
   "name": "vue-introjs",
-  "version": "1.3.1",
-  "description": "intro.js bindings for Vue",
-  "main": "dist/index.min.js",
-  "repository": "https://github.com/alex-oleshkevich/vue-introjs",
-  "author": "Alex Oleshkevich",
-  "license": "MIT",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "watch": "webpack -w",
-    "build:dev": "webpack",
-    "build": "webpack -p",
-    "test": "jest",
-    "lint": "eslint --ext .js src/"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "test:unit": "vue-cli-service test:unit"
+  },
+  "dependencies": {
+    "intro.js": "^2.9.3",
+    "vue": "^2.5.17"
   },
   "peerDependencies": {
     "intro.js": "^2.7.0"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-eslint": "^8.2.5",
-    "babel-jest": "^23.2.0",
-    "babel-loader": "^7.1.4",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1",
-    "clean-webpack-plugin": "^0.1.19",
-    "eslint": "^5.0.1",
-    "eslint-friendly-formatter": "^4.0.1",
-    "eslint-loader": "^2.0.0",
-    "eslint-plugin-html": "^4.0.5",
-    "jest": "^23.2.0",
-    "jest-serializer-vue": "^2.0.2",
-    "uglifyjs-webpack-plugin": "^1.2.7",
-    "vue": "^2.5.16",
-    "webpack": "^4.14.0",
-    "webpack-cli": "^3.0.8"
+    "@vue/cli-plugin-babel": "^3.0.3",
+    "@vue/cli-plugin-eslint": "^3.0.3",
+    "@vue/cli-plugin-unit-jest": "^3.0.3",
+    "@vue/cli-service": "^3.0.3",
+    "@vue/test-utils": "^1.0.0-beta.20",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "^23.0.1",
+    "vue-template-compiler": "^2.5.17"
   }
 }
