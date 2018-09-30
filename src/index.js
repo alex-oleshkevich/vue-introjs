@@ -25,7 +25,7 @@ const Plugin = {
         Vue.directive('intro-tooltip-class', DIRECTIVES.tooltipClass);
         Vue.directive('intro-highlight-class', DIRECTIVES.highlightClass);
         Vue.directive('intro-scroll-to', DIRECTIVES.scrollTo);
-        Vue.directive('intro-disable-interaction', DIRECTIVES.disableIntegration);
+        Vue.directive('intro-disable-interaction', DIRECTIVES.disableInteraction);
         Vue.directive('intro-hint', DIRECTIVES.hint);
         Vue.directive('intro-hint-position', DIRECTIVES.hintPosition);
         Vue.directive('intro-autostart', DIRECTIVES.autostart);

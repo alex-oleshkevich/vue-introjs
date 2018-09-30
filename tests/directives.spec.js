@@ -59,13 +59,13 @@ describe('directives', () => {
         expect(vm.$el.dataset.scrollto).toEqual('element');
     });
 
-    it('v-intro-disable-integration should add data-disable-integration attribute', () => {
+    it('v-intro-disable-interaction should add data-disable-integration attribute', () => {
         const Comp = Vue.extend({
-            template: `<div v-intro-disable-integration="true"></div>`,
-            directives: { introDisableIntegration: DIRECTIVES.disableIntegration }
+            template: `<div v-intro-disable-interaction="true"></div>`,
+            directives: { introDisableIntegration: DIRECTIVES.disableInteraction }
         });
         const vm = new Comp().$mount();
-        expect(vm.$el.dataset.disableIntegration).toEqual('true');
+        expect(vm.$el.dataset.disableInteraction).toEqual('true');
     });
 
     it('v-intro-hint should add data-hint attribute', () => {
