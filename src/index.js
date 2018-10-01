@@ -1,8 +1,13 @@
 /* global introJs */
-import { DIRECTIVES } from './directives';
+
+import * as components from './components';
+import {DIRECTIVES} from './directives';
+import manager from './manager';
 import timer from './timer';
 
 const DEFAULT_OPTIONS = {
+    prefix: 'intro-',
+    prototypeName: '$tour',
     waitTimeout: 400
 };
 
@@ -13,6 +18,12 @@ const Plugin = {
         Vue.prototype.$intro = (...args) => {
             return introJs(...args);
         };
+
+        Vue.prototype[options.prototypeName] = manager;
+
+        Object.entries(components).forEach(([name, component]) => {
+            Vue.component(`${options.prefix}${name.toLocaleLowerCase()}`, component);
+        });
 
         const Comp = Vue.extend(timer);
         window.__introjsDiscovery = new Comp({
