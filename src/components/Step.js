@@ -1,3 +1,6 @@
+/**
+ * An intro.js step.
+ */
 export default {
     name: 'Step',
     inject: ['introScene'],
