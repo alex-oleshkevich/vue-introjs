@@ -7,10 +7,10 @@
   "author": "Alex Oleshkevich",
   "license": "MIT",
   "scripts": {
-    "watch": "webpack -w",
-    "build:dev": "webpack",
-    "build": "webpack -p",
-    "test": "jest",
+    "watch": "NODE_ENV=development webpack -w",
+    "build:dev": "NODE_ENV=development webpack",
+    "build": "NODE_ENV=production webpack -p",
+    "test": "NODE_ENV=production jest",
     "lint": "eslint --ext .js src/"
   },
   "peerDependencies": {
@@ -35,5 +35,9 @@
     "vue": "^2.5.16",
     "webpack": "^4.14.0",
     "webpack-cli": "^3.0.8"
+  },
+  "dependencies": {
+    "intro.js": "2.9.3",
+    "vue-loader": "15.4.2"
   }
 }

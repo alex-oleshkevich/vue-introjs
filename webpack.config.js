@@ -5,6 +5,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ENV = process.env.NODE_ENV || 'development';
 
 module.exports = {
+    mode: process.env.NODE_ENV,
     entry: {
         index: './src/index.js'
     },

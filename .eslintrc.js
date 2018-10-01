@@ -8,7 +8,7 @@ module.exports = {
         browser: true,
         jasmine: true,
         es6: true,
-        node: true,
+        node: true
     },
     extends: 'eslint:recommended',
     globals: {
@@ -22,9 +22,10 @@ module.exports = {
         'arrow-parens': 0,
         'generator-star-spacing': 0,
         'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
-        "semi": [2, "always"],
-        "space-before-function-paren": [2, "never"],
-        "object-property-newline": 0,
-        "indent": ["error", 4, {SwitchCase: 1}]
+        'semi': [2, 'always'],
+        'space-before-function-paren': [2, 'never'],
+        'object-property-newline': 0,
+        'no-console': 'off',
+        'indent': ['error', 4, {SwitchCase: 1}]
     }
-}
+};
