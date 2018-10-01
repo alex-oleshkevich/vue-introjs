@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.7.0/introjs.min.css" rel="stylesheet">
     <style type="text/css">
         .red-bg {
@@ -13,81 +13,107 @@
             background: blue;
         }
     </style>
-  </head>
+</head>
 
-  <body>
-    <div class="container" id="root">
-        <br />
-        <div>
-            <button class="btn btn-primary" @click="startTour">Start tour</button>
-        </div>
-        <br />
-        <div v-intro="'Router view here'">1. Step.</div>
-        <br />
+<body>
+<div class="container" id="root">
+    <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link" href="index.html">Default</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="autostart.html">Autostart</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="autostart-hints.html">Autostart hints</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="listeners.html">Events</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="router.html">Usage with Router</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="multiscene.html">Multiple Scenes</a>
+        </li>
+    </ul>
+    <hr/>
+    <br/>
+    <br/>
+    <div>
+        <button class="btn btn-primary" @click="startTour">Start tour</button>
+    </div>
+    <br/>
+    <intro-scene>
+        <intro-step text="Router view here">
+            <div>1. Step.</div>
+        </intro-step>
+        <br/>
 
         <div>
             <router-view></router-view>
         </div>
-        <br />
-        <div>
-            <a href="#/">Foo</a> |
-            <a href="#/bar">Bar</a> |
-            <a href="#/nested">Nested</a> |
-            <a href="#/delay">Delayed</a>
-        </div>
+    </intro-scene>
+    <br/>
+    <div>
+        <a href="#/">Foo</a> |
+        <a href="#/bar">Bar</a> |
+        <a href="#/nested">Nested</a> |
+        <a href="#/delay">Delayed</a>
     </div>
-    <script src="https://unpkg.com/vue@2.4.4/dist/vue.js"></script>
-    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.7.0/intro.min.js"></script>
-    <script type="text/javascript" src="../dist/index.min.js"></script>
-    <script type="text/javascript">
-        var FooComponent = { template: `<div v-intro="'Intro for FOO component'">FOO COMPONENT</div>` };
-        var BarComponent = { template: `<div v-intro="'Intro for BAR component'">BAR COMPONENT</div>` };
-        var DelayedComponent = {
-            template: `<div v-intro="'Intro for DELAYED component'">This component loaded after 2000ms delay.</div>` ,
-            beforeRouteEnter (to, from, next) {
-                setTimeout(function () {
-                    next();
-                }, 2000);
-            }
-        };
-        var NestedTriggerComponent = {
-            template: `<div>
+</div>
+<script src="https://unpkg.com/vue@2.5.10/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.7.0/intro.min.js"></script>
+<script type="text/javascript" src="../dist/index.min.js"></script>
+<script type="text/javascript">
+    var FooComponent = {template: `<intro-step text="Intro for FOO component">FOO COMPONENT</intro-step>`};
+    var BarComponent = {template: `<intro-step text="Intro for BAR component">BAR COMPONENT</intro-step>`};
+    var DelayedComponent = {
+        template: `<intro-step text="Intro for DELAYED component">This component loaded after 2000ms delay.</intro-step>`,
+        beforeRouteEnter(to, from, next) {
+            setTimeout(function() {
+                next();
+            }, 2000);
+        }
+    };
+    var NestedTriggerComponent = {
+        template: `<div>
                 NESTER COMPONENT<br />
-                <div  v-intro="'Intro for NESTED component'">
+                <intro-step  text="Intro for NESTED component">
                     Root component of current route triggers tour on button click.
-                </div>
+                </intro-step>
                 <button @click="showTour2">Start</button>
             </div>`,
-            methods: {
-                showTour2() {
-                    this.$intro().start();
-                }
+        methods: {
+            showTour2() {
+                this.$tour.start();
             }
-        };
+        }
+    };
 
-        var router = new VueRouter({
-            routes: [
-                { path: '/', component: FooComponent },
-                { path: '/bar', component: BarComponent },
-                { path: '/delay', component: DelayedComponent },
-                { path: '/nested', component: NestedTriggerComponent }
-            ]
-        });
-        new Vue({
-            el: '#root',
-            router: router,
-            data() {
-                return {
-                    autostart: false
-                };
-            },
-            methods: {
-                startTour() {
-                    this.$intro().start();
-                }
+    var router = new VueRouter({
+        routes: [
+            {path: '/', component: FooComponent},
+            {path: '/bar', component: BarComponent},
+            {path: '/delay', component: DelayedComponent},
+            {path: '/nested', component: NestedTriggerComponent}
+        ]
+    });
+    new Vue({
+        el: '#root',
+        router: router,
+        data() {
+            return {
+                autostart: false
+            };
+        },
+        methods: {
+            startTour() {
+                this.$tour.start();
             }
-        });
-    </script>
-  </body>
+        }
+    });
+</script>
+</body>
 </html>

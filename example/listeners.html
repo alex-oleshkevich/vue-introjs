@@ -1,52 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.7.0/introjs.min.css" rel="stylesheet">
-  </head>
+    <style type="text/css">
+        .red-bg {
+            background: red;
+        }
 
-  <body>
-    <div class="container" id="root">
-        <br />
-        <br />
-        <div
-            v-intro-autostart="true"
-            v-intro-autostart:on.autostart="onAutostart"
-            v-intro-autostart:on.autostarthints="onAutostartHints"
-            v-intro-autostart:on.complete="onComplete"
-            v-intro-autostart:on.exit="onExit"
-            v-intro-autostart:on.beforeexit="onBeforeExit"
-            v-intro-autostart:on.change="onChange"
-            v-intro-autostart:on.beforechange="onBeforeChange"
-            v-intro-autostart:on.afterchange="onAfterChange"
-            >
-            <div v-intro="'Step 1'">1. Step.</div>
-            <div v-intro="'Step 2'">2. Step.</div>
+        .blue-bg {
+            background: blue;
+        }
+    </style>
+</head>
 
+<body>
+<div class="container" id="root">
+    <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link" href="index.html">Default</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="autostart.html">Autostart</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="autostart-hints.html">Autostart hints</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="listeners.html">Events</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="router.html">Usage with Router</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="multiscene.html">Multiple Scenes</a>
+        </li>
+    </ul>
+    <hr/>
+    <br/>
+    <br/>
+    <intro-scene
+            autostart
+            @autostart="onAutostart"
+            @autostart-hints="onAutostartHints"
+            @complete="onComplete"
+            @exit="onExit"
+            @beforeexit="onBeforeExit"
+            @change="onChange"
+            @beforechange="onBeforeChange"
+            @afterchange="onAfterChange"
+            @hintclick="onHintClick"
+            @hintsadded="onHintsAdded"
+            @hintclose="onHintClose"
+    >
+        <div>
+            <intro-step text="Step 1">
+                <div>1. Step.</div>
+            </intro-step>
+            <intro-step text="Step 2">
+                <div>2. Step.</div>
+            </intro-step>
+
+            <intro-hint text="Hint 1">
+                <div>Hint 1.</div>
+            </intro-hint>
+            <intro-hint text="Hint 2">
+                <div>Hint 2.</div>
+            </intro-hint>
         </div>
-        <br />
-        <p>
-            See browser's console.
-        </p>
-    </div>
-    <script src="https://unpkg.com/vue@2.4.4/dist/vue.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.7.0/intro.min.js"></script>
-    <script type="text/javascript" src="../dist/index.min.js"></script>
-    <script type="text/javascript">
-        new Vue({
-            el: '#root',
-            methods: {
-                onComplete(el, introjs) { console.log('complete', el, introjs); },
-                onExit(el, introjs) { console.log('exit', el, introjs); },
-                onBeforeExit(el, introjs) { console.log('before exit', el, introjs); },
-                onChange(el, introjs) { console.log('change', el, introjs); },
-                onBeforeChange(el, introjs) { console.log('before change', el, introjs); },
-                onAfterChange(el, introjs) { console.log('after change', el, introjs); },
-                onAutostart(el, introjs) { console.log('autostarted', el, introjs); },
-                onAutostartHints(el, introjs) { console.log('hints autostarted', el, introjs); }
+    </intro-scene>
+    <br/>
+    <p>
+        See browser's console.
+    </p>
+</div>
+<script src="https://unpkg.com/vue@2.4.4/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.7.0/intro.min.js"></script>
+<script type="text/javascript" src="../dist/index.min.js"></script>
+<script type="text/javascript">
+    new Vue({
+        el: '#root',
+        methods: {
+            onComplete(...args) {
+                console.log('complete', ...args);
+            },
+            onExit(...args) {
+                console.log('exit', ...args);
+            },
+            onBeforeExit(...args) {
+                console.log('before exit', ...args);
+            },
+            onChange(...args) {
+                console.log('change', ...args);
+            },
+            onBeforeChange(...args) {
+                console.log('before change', ...args);
+            },
+            onAfterChange(...args) {
+                console.log('after change', ...args);
+            },
+            onAutostart(...args) {
+                console.log('autostarted', ...args);
+            },
+            onAutostartHints(...args) {
+                console.log('hints autostarted', ...args);
+            },
+            onHintClick(...args) {
+                console.log('on hint click', ...args);
+            },
+            onHintsAdded(...args) {
+                console.log('on hints added', ...args);
+            },
+            onHintClose(...args) {
+                console.log('on hint close', ...args);
             }
-        });
-    </script>
-  </body>
+        }
+    });
+</script>
+</body>
 </html>

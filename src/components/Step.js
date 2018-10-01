@@ -13,17 +13,17 @@ export default {
         /**
          * Optionally define the number (priority) of step.
          */
-        step: {type: [String, Number]},
+        step: [String, Number],
 
         /**
          * Optionally define a CSS class for tooltip.
          */
-        tooltipClass: {type: String},
+        tooltipClass: String,
 
         /**
          *  Optionally append a CSS class to the helperLayer.
          */
-        highlightClass: {type: String},
+        highlightClass: String,
 
         /**
          * Optionally define the position of tooltip:
@@ -31,36 +31,41 @@ export default {
          * bottom-right-aligned or auto (to detect the position of element and assign the correct position automatically).
          * Default is bottom.
          */
-        position: {type: String, default: 'bottom'},
+        position: String,
 
         /**
          * Optionally define the element to scroll to, element or tooltip.
          * Default is element.
          */
-        scrollTo: {type: String, default: 'element'},
+        scrollTo: String,
 
         /**
          * To disable interactions with elements inside the highlighted box, true or false (also 1 or 0).
          */
-        disableInteraction: {type: [Boolean, Number]}
+        disableInteraction: [Boolean, Number]
     },
     mounted() {
-        this.introScene.addStep({
+        const props = {
             element: this.$el,
             intro: this.text,
             step: this.step,
             tooltipClass: this.tooltipClass,
             highlightClass: this.highlightClass,
-            position: this.position,
+            // bug in intro.js: it ignores global position and always uses one from the step
+            position: this.position || this.introScene.tooltipPosition,
             scrollTo: this.scrollTo,
             disableInteraction: this.disableInteraction
-        });
+        };
+        const step = {};
+        Object
+            .entries(props)
+            /* eslint-disable-next-line no-unused-vars */
+            .filter(([key, value]) => !!value)
+            .forEach(([key, value]) => step[key] = value);
+
+        this.introScene.addStep(step);
     },
     render(h) {
-        return h('div', {
-            attrs: {
-                'data-step': this.step
-            }
-        }, this.$slots.default);
+        return h('div', {}, this.$slots.default);
     }
 };

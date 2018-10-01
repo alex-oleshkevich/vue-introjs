@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.7.0/introjs.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="container" id="root">
+    <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link" href="index.html">Default</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="autostart.html">Autostart</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="autostart-hints.html">Autostart hints</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="listeners.html">Events</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="router.html">Usage with Router</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="multiscene.html">Multiple Scenes</a>
+        </li>
+    </ul>
+    <hr/>
+    <br/>
+    <br/>
+    <div class="row">
+        <div class="col-4">
+            <h1>Scene A</h1>
+            <intro-scene>
+                <div>
+                    <intro-step text="Scene A: Step 1">
+                        <div>1. Scene A: Step.</div>
+                    </intro-step>
+                    <intro-step text="Scene A: Step 2">
+                        <div>2. Scene A: Step.</div>
+                    </intro-step>
+                </div>
+            </intro-scene>
+            <button @click="start('default')">Start A</button>
+        </div>
+        <div class="col-4">
+            <h1>Scene B</h1>
+            <intro-scene name="scene-b">
+                <div>
+                    <intro-step text="Scene B: Step 1">
+                        <div>Scene B: 1. Step.</div>
+                    </intro-step>
+                    <intro-step text="Scene B: Step 2">
+                        <div>Scene B: 2. Step.</div>
+                    </intro-step>
+                </div>
+            </intro-scene>
+            <button @click="start('scene-b')">Start B</button>
+        </div>
+        <div class="col-4">
+            <h1>Scene C</h1>
+            <intro-scene name="scene-c">
+                <div>
+                    <intro-step text="Scene C: Step 1">
+                        <div>1. Scene C: Step.</div>
+                    </intro-step>
+                    <intro-step text="Scene C: Step 2">
+                        <div>2. Scene C: Step.</div>
+                    </intro-step>
+                </div>
+            </intro-scene>
+            <button @click="start('scene-c')">Start C</button>
+        </div>
+    </div>
+    <br/>
+</div>
+<script src="https://unpkg.com/vue@2.4.4/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.7.0/intro.min.js"></script>
+<script type="text/javascript" src="../dist/index.min.js"></script>
+<script type="text/javascript">
+    new Vue({
+        el: '#root',
+        methods: {
+            start(scene) {
+                console.log('start', scene);
+                this.$tour.start(scene);
+            }
+        }
+    });
+</script>
+</body>
+</html>

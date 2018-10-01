@@ -16,6 +16,16 @@ export default {
         autostart: Boolean,
 
         /**
+         * Autostart only hints.
+         */
+        autostartHints: Boolean,
+
+        /**
+         * Autostart only tour.
+         */
+        autostartTour: Boolean,
+
+        /**
          * Next button label.
          */
         nextLabel: String,
@@ -48,17 +58,17 @@ export default {
         hideNext: Boolean,
 
         /**
-         * Default tooltip position
+         * Default tooltip position.
          */
         tooltipPosition: String,
 
         /**
-         * Adding CSS class to all tooltips
+         * Adding CSS class to all tooltips.
          */
         tooltipClass: String,
 
         /**
-         * Additional CSS class for the helperLayer
+         * Additional CSS class for the helperLayer.
          */
         highlightClass: String,
 
@@ -83,44 +93,64 @@ export default {
         keyboardNavigation: {type: Boolean, default: true},
 
         /**
-         * Show introduction navigation buttons or not, true or false
+         * Show introduction navigation buttons or not, true or false.
          */
         showButtons: {type: Boolean, default: true},
 
         /**
-         * Show introduction bullets or not, true or false
+         * Show introduction bullets or not, true or false.
          */
         showBullets: {type: Boolean, default: true},
 
         /**
-         * Show introduction progress or not, true or false
+         * Show introduction progress or not, true or false.
          */
         showProgress: Boolean,
 
         /**
-         * Auto scroll to highlighted element if it’s outside of viewport, true or false
+         * Auto scroll to highlighted element if it’s outside of viewport, true or false.
          */
         scrollToElement: {type: Boolean, default: true},
 
         /**
-         * Target element to scroll to (element or tooltip). Default is element. Applies when scrollToElement is true
+         * Target element to scroll to (element or tooltip). Default is element. Applies when scrollToElement is true.
          */
         scrollTo: String,
 
         /**
-         * Padding of scroll in px. Default is 30. Applies when scrollToElement is true
+         * Padding of scroll in px. Default is 30. Applies when scrollToElement is true.
          */
         scrollPadding: [String, Number],
 
         /**
-         * Adjust the overlay opacity, Number between 0 and 1
+         * Adjust the overlay opacity, Number between 0 and 1.
          */
         overlayOpacity: [String, Number],
 
         /**
-         * To disable interactions with elements inside the highlighted box, true or false
+         * To disable interactions with elements inside the highlighted box, true or false.
          */
-        disableInteraction: Boolean
+        disableInteraction: Boolean,
+
+        /**
+         * Optionally define the position of hint.
+         * Options: top-middle, top-left, top-right, bottom-left, bottom-right, bottom-middle,
+         *  middle-left, middle-right, middle-middle.
+         * Default: top-middle
+         */
+        hintPosition: String,
+
+        /**
+         * Hint button label.
+         * Default: ‘Got it’
+         */
+        hintButtonLabel: String,
+
+        /**
+         * To add animation to hints or not.
+         * Default: true
+         */
+        hintAnimation: {type: Boolean, default: true},
     },
     data() {
         return {
@@ -133,22 +163,67 @@ export default {
         };
     },
     created() {
-        const exclude = ['name', 'autostart'];
-        const props = {};
-        Object
-            .entries(this.$props)
-            .filter(([name, value]) => !exclude.includes(name) && !!value)
-            .forEach(([name, value]) => props[name] = value);
-        manager.addScene(this.name, props);
+        manager.addScene(this.name, this.props);
     },
     mounted() {
         if (this.autostart) {
-            manager.start(this.name);
+            this.start();
+            this.showHints();
+        } else {
+            if (this.autostartTour) {
+                this.start();
+            }
+
+            if (this.autostartHints) {
+                this.showHints();
+            }
+        }
+    },
+    computed: {
+        props() {
+            const exclude = ['name', 'autostart'];
+            const props = {};
+            Object
+                .entries(this.$props)
+                .filter(([name, value]) => !exclude.includes(name) && value !== undefined)
+                .forEach(([name, value]) => props[name] = value);
+
+            // add listeners
+            props.oncomplete = () => {
+                alert(1);
+            };
+            return props;
         }
     },
     methods: {
         addStep(step) {
             manager.addStep(this.name, step);
+        },
+        addHint(hint) {
+            manager.addHint(this.name, hint);
+        },
+        start() {
+            this.bindListeners(
+                manager.start(this.name)
+            );
+            this.$emit('autostart');
+        },
+        showHints() {
+            this.bindListeners(
+                manager.showHints(this.name)
+            );
+            this.$emit('autostart-hints');
+        },
+        bindListeners(instance) {
+            instance.oncomplete((...args) => this.$emit('complete', ...args));
+            instance.onbeforeexit((...args) => this.$emit('beforeexit', ...args));
+            instance.onexit((...args) => this.$emit('exit', ...args));
+            instance.onbeforechange((...args) => this.$emit('beforechange', ...args));
+            instance.onchange((...args) => this.$emit('change', ...args));
+            instance.onafterchange((...args) => this.$emit('afterchange', ...args));
+            instance.onhintclick((...args) => this.$emit('hintclick', ...args));
+            instance.onhintsadded((...args) => this.$emit('hintsadded', ...args));
+            instance.onhintclose((...args) => this.$emit('hintclose', ...args));
         }
     },
     render(h) {
