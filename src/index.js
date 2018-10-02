@@ -1,9 +1,12 @@
 import * as components from './components';
 import manager from './manager';
 
+export * from './components';
+export {manager};
+
 const DEFAULT_OPTIONS = {
     prefix: 'intro-',
-    prototypeName: '$tour',
+    prototypeName: '$tour'
 };
 
 const Plugin = {
@@ -11,7 +14,6 @@ const Plugin = {
         options = Object.assign({}, DEFAULT_OPTIONS, options);
 
         Vue.prototype[options.prototypeName] = manager;
-
         Object.entries(components).forEach(([name, component]) => {
             Vue.component(`${options.prefix}${name.toLocaleLowerCase()}`, component);
         });
