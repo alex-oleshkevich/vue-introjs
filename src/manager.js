@@ -1,11 +1,10 @@
 import introJs from 'intro.js';
 
-/**
- * Keeps all registered scenes.
- */
-const scenes = {};
+export class Manager {
+    constructor() {
+        this.scenes = {};
+    }
 
-export default {
     /**
      * Add a new scene.
      *
@@ -19,11 +18,11 @@ export default {
         if (this.hasScene(name)) {
             throw new Error(`vue-introjs: "${name}" already exists. Please, use another name.`);
         }
-        scenes[name] = {
+        this.scenes[name] = {
             steps: [], hints: [], options: options || {}
         };
         return this;
-    },
+    }
 
     /**
      * Test if scene with given name already registered.
@@ -32,8 +31,8 @@ export default {
      * @return {boolean}
      */
     hasScene(name) {
-        return Object.keys(scenes).includes(name);
-    },
+        return Object.keys(this.scenes).includes(name);
+    }
 
     /**
      * Returns scene by name.
@@ -46,8 +45,8 @@ export default {
         if (!this.hasScene(name)) {
             throw new Error(`vue-introjs: Scene "${name}" is not defined.`);
         }
-        return scenes[name];
-    },
+        return this.scenes[name];
+    }
 
     /**
      * Add a step to scene.
@@ -62,7 +61,7 @@ export default {
         }
 
         this.getScene(scene).steps.push(options);
-    },
+    }
 
     /**
      * Add a hint to scene.
@@ -77,7 +76,7 @@ export default {
         }
 
         this.getScene(scene).hints.push(options);
-    },
+    }
 
     /**
      * Returns steps for scene ordered by step number.
@@ -104,7 +103,7 @@ export default {
             });
         steps.sort((a, b) => a.step > b.step);
         return steps;
-    },
+    }
 
     /**
      * Start the tour for a given scene.
@@ -121,7 +120,7 @@ export default {
             .setOptions(sceneConfig.options)
             .addSteps(this.getSteps(scene))
             .start();
-    },
+    }
 
     /**
      * Show all hints.
@@ -135,4 +134,6 @@ export default {
             .setOptions(options)
             .showHints();
     }
-};
+}
+
+export default new Manager();

@@ -6,17 +6,13 @@ module.exports = {
     },
     env: {
         browser: true,
-        jasmine: true,
         es6: true,
-        node: true
+        node: true,
     },
     extends: 'eslint:recommended',
     globals: {
         Vue: true
     },
-    plugins: [
-        'html'
-    ],
     rules: {
         'max-len': 0,
         'arrow-parens': 0,

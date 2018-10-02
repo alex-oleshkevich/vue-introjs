@@ -150,7 +150,7 @@ export default {
          * To add animation to hints or not.
          * Default: true
          */
-        hintAnimation: {type: Boolean, default: true},
+        hintAnimation: {type: Boolean, default: true}
     },
     data() {
         return {
