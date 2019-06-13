@@ -10,14 +10,11 @@
         "test:unit": "vue-cli-service test:unit"
     },
     "dependencies": {
-        "core-js": "^2.6.5",
-        "vue": "^2.6.10"
-    },
-    "peerDependencies": {
         "intro.js": "~2.9.3"
     },
     "devDependencies": {
-        "intro.js": "^2.9.3",
+        "vue": "^2.6.10",
+        "core-js": "^2.6.5",
         "@vue/cli-plugin-babel": "^3.8.0",
         "@vue/cli-plugin-eslint": "^3.8.0",
         "@vue/cli-plugin-unit-jest": "^3.8.0",
