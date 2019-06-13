@@ -1,30 +1,15 @@
 module.exports = {
     root: true,
-    parser: 'babel-eslint',
-    parserOptions: {
-        sourceType: 'module'
-    },
     env: {
-        browser: true,
-        jasmine: true,
-        es6: true,
-        node: true,
+        node: true
     },
-    extends: 'eslint:recommended',
-    globals: {
-        Vue: true
-    },
-    plugins: [
-        'html'
-    ],
+    extends: ['plugin:vue/essential', '@vue/prettier'],
     rules: {
-        'max-len': 0,
-        'arrow-parens': 0,
-        'generator-star-spacing': 0,
-        'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
-        "semi": [2, "always"],
-        "space-before-function-paren": [2, "never"],
-        "object-property-newline": 0,
-        "indent": ["error", 4, {SwitchCase: 1}]
+        'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+        'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+        indent: ['warn', 4]
+    },
+    parserOptions: {
+        parser: 'babel-eslint'
     }
-}
+};
