@@ -35,7 +35,7 @@ As this plugin relies on global `introJs` variable, webpack's should provide it:
     plugins: [
         new webpack.ProvidePlugin({
             // other modules
-            introJs: ['intro.js', 'introJs']
+            introJs: ['intro.js']
         })
     ]
 }
