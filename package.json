@@ -1,7 +1,7 @@
 {
     "name": "vue-introjs",
-    "version": "0.1.0",
-    "private": true,
+    "version": "2.0.0-beta.1",
+    "main": "dist/vueintrojs.common.js",
     "scripts": {
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",

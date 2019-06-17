@@ -5,3 +5,14 @@ yarn.lock
 /reports
 .vscode
 testproject
+.idea
+public/
+tests/
+*rc
+!src/
+.*
+*.config.js
+yarn.*
+yarn-*
+*.map
+*.tgz
