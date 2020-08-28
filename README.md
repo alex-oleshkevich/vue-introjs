@@ -50,7 +50,7 @@ import 'intro.js/introjs.css';
 
 If you are using `vue-cli` this can be done with the following lines in your `vue.config.js`:
 
-``javascript
+```javascript
 // vue.config.js
 const webpack = require('webpack');
 
