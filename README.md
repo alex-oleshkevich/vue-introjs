@@ -22,13 +22,16 @@ This plugin **does not** come with intro.js built-in.
 
 The motivation of it is to give the developer more control on intro.js versions.
 
-#### Use with webpack
+#### Use with webpack and vue-cli
 Install required dependency:
 ```bash
 yarn add intro.js
+
+# or via npm:
+npm i intro.js
 ```
 
-As this plugin relies on global `introJs` variable, webpack's should provide it:
+As this plugin relies on global `introJs` variable, webpack should provide it:
 ```javascript
 // webpack.config.js
 {
@@ -43,6 +46,23 @@ As this plugin relies on global `introJs` variable, webpack's should provide it:
 // attach CSS
 // SomeComponent.vue
 import 'intro.js/introjs.css';
+```
+
+If you are using `vue-cli` this can be done with the following lines in your `vue.config.js`:
+
+```javascript
+// vue.config.js
+const webpack = require('webpack');
+
+module.exports = {
+  configureWebpack: {
+    plugins: [
+      new webpack.ProvidePlugin({
+        'introJs': ['intro.js']
+      })
+    ]
+  },
+}
 ```
 
 #### Use with vue-cli and webpack template
