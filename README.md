@@ -77,6 +77,42 @@ then add into the `plugins` sections of `build/webpack.dev.conf.js` and `build/w
 
 Don't forget to install `intro.js` though and save it (via yarn or npm). The `webpack.ProvidePlugin` will pull it in, so no need to `import introJs from 'intro.js'` in `src/main.js`
 
+#### Use with NuxtJs
+Make sure you install `vue-introjs` and `intro.js` then create a Nuxt plugin in `/plugins`
+```javascript
+//plugins/vue-introjs.js`
+import Vue from 'vue'
+import VueIntro from 'vue-introjs'
+import 'intro.js/introjs.css'
+
+Vue.use(VueIntro)
+```
+
+then add it to your `nuxt.config.js` list of plugins
+```javascript
+//nuxt.config.js`
+plugins: [
+    // ..
+    { src: '~plugins/vue-introjs.js', mode: 'client' },
+]
+```
+
+Finally register `introjs` by adding it as a webpack plugin and you're set
+```javascript
+//nuxt.config.js
+import webpack from 'webpack'
+
+export default {
+    build: {
+        // ..
+        plugins: [
+            new webpack.ProvidePlugin({
+                introJs: ['intro.js'],
+            }),
+        ],
+    }
+}
+```
 
 ## Contents
 The plugin extends Vue with a set of directives and `$intro()` constructor function.
